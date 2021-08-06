@@ -15,14 +15,31 @@ function Validate(){
     $phone_number = $_POST['phone_number'];
     $media = $_POST['media'];
 
-    //validation
+    //remove space
+    $phone_number = str_replace(' ', '', $phone_number);
+
+    //remove -
+    $phone_number = str_replace('-', '', $phone_number);
+
+    //remove +
+    $phone_number = str_replace('+', '', $phone_number);
+
+    //validate phone number
     if(!is_numeric($phone_number)){
-        $GLOBALS['message'] = "Phone number only can be numberic!\nExample: 6281234567890";
+        $GLOBALS['message'] = "Phone number only can be numeric!\nExample: 6281234567890";
         return;
     }
 
+    //replace leading 0 with 62
     if(startsWith($phone_number, '0')){
         $phone_number = replace_first_str('0', '62', $phone_number);
+    }
+
+    //validate media (mitigate intercept attack by modifying POST parameter)
+    $media_list = array('sms', 'whatsapp', 'line', 'telegram');
+    if (!in_array($media, $media_list)) {
+        $GLOBALS['message'] = "Invalid media type. Please choose from the UI!";
+        return;
     }
 
     date_default_timezone_set('Asia/Jakarta');
