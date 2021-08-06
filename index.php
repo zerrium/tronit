@@ -1,6 +1,7 @@
 <?php
 
 $message = "";
+$number = 0;
 
 function replace_first_str($search_str, $replacement_str, $src_str){
     return (false !== ($pos = strpos($src_str, $search_str))) ? substr_replace($src_str, $replacement_str, $pos, strlen($search_str)) : $src_str;
@@ -62,10 +63,29 @@ function Validate(){
     CloseCon($con);
 }
 
+function countData(){
+    //Get number of data from database
+    include 'db_con.php';
+    $con = OpenCon();
+
+    $stmt = $con->prepare("SELECT count(nohp) FROM nohp;");
+	$result = $stmt -> execute();
+
+    if(!$result){
+        $GLOBALS['number'] = -1;
+    }else{
+        $stmt->bind_result($GLOBALS['number']);
+		$stmt->fetch();
+    }
+
+    CloseCon($con);
+}
+
 //check if form was submitted
 if(isset($_POST['submit'])){
     Validate();
 }
+countData();
 
 ?>
 
@@ -99,7 +119,7 @@ if(isset($_POST['submit'])){
         </div>
     </div>
     <div class="justify-content-center align-items-center align-content-center col-md-6 mx-auto" style="margin: 60px;">
-        <form method="POST" action="">
+        <form method="POST" action="" style="padding-bottom: 30px;">
             <p style="font-family: Coda, cursive;font-size: 24px;margin-bottom: -5px;color: rgb(255,255,255);"><br>Phone number:</p>
             <input class="bg-dark form-control" type="text" required="" name="phone_number" placeholder="6281234567890" style="color: rgb(255,255,255);">
             <p style="font-family: Coda, cursive;font-size: 24px;margin-bottom: -5px;margin-top: 16px;color: rgb(255,255,255);">Media:</p>
@@ -116,9 +136,20 @@ if(isset($_POST['submit'])){
         <?php
             if(isset($_POST['submit'])){
                 $s = $GLOBALS['message'];
-                echo "<p style=\"font-family: Coda, cursive;font-size: 24px;color: rgb(255,255,255);\"><br>$s</p>";    
+                echo "<p style=\"font-family: Coda, cursive;font-size: 24px;color: rgb(255,255,255);\"><br>$s<br></p>";    
             }
         ?>
+        <div class="card bg-dark" style="margin-left: 10px;margin-right: 10px;">
+            <div class="card-body">
+                <h4 class="card-title" style="font-family: 'Coda Caption', sans-serif;text-align: center;">Number of collected data:</h4>
+                <p class="card-text" style="text-align: center;font-size: 48px;font-family: Coda, cursive;">
+                    <?php
+                        $n = $GLOBALS['number'];
+                        echo $n;
+                    ?>
+                </p>
+            </div>
+        </div>
     </div>
     <div class="footer-dark">
         <footer>
