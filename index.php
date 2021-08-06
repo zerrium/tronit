@@ -1,5 +1,7 @@
 <?php
 
+include 'db_con.php';
+
 $message = "";
 $number = 0;
 
@@ -47,7 +49,6 @@ function Validate(){
     $time = date('Y-m-d H:i:s');
 
     //database
-    include 'db_con.php';
     $con = OpenCon();
 
     $stmt = $con->prepare("INSERT INTO nohp (nohp, media, recorded_on) VALUES (?, ?, ?);");
@@ -65,7 +66,6 @@ function Validate(){
 
 function countData(){
     //Get number of data from database
-    include 'db_con.php';
     $con = OpenCon();
 
     $stmt = $con->prepare("SELECT count(nohp) FROM nohp;");
