@@ -136,6 +136,9 @@ if(isset($_POST['submit'])){
                             If we don't get a good response from it, Zerrium might consider selling the data to spammers so they take their own medicine :D<br></p>
                     </div>
                 </div>
+                <div class="text-dark social-icons">
+                    <a href="https://github.com/zerrium/tronit" target="_blank"><img src="assets/img/github.png"></img></a>
+                </div>
                 <p class="copyright">Zerrium © 2021</p>
             </div>
         </footer>
