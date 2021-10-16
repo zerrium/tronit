@@ -163,7 +163,7 @@ countData();
                     </div>
                     <div class="col-md-6 item text">
                         <h3>Where do this data go?</h3>
-                        <p class="text-justify">To Zerrium's database. When we have collected many phone numbers of spammers, he will submit and report all of these to <a class="bg-dark" href="https://twitter.com/aduanBRTI" style="color: rgb(139,195,255);" target="_blank">Aduan BRTI</a>.
+                        <p class="text-justify">To Zerrium's database. When we have collected many phone numbers of spammers, he will submit and report all of these to <a class="bg-dark" href="https://twitter.com/aduanPPI" style="color: rgb(139,195,255);" target="_blank">Aduan PPI</a>.
                             If we don't get a good response from it, Zerrium might consider selling the data to spammers so they take their own medicine :D<br></p>
                     </div>
                 </div>
