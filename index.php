@@ -58,7 +58,7 @@ function Validate(){
     if($result){
         $GLOBALS['message'] = "Submitted! Thank you :)";
     }else{
-        $GLOBALS['message'] = $stmt -> error;
+        $GLOBALS['message'] = "An error has occured:\n" . (string) $stmt -> error;
     }
 
     CloseCon($con);
