@@ -49,16 +49,20 @@ function Validate(){
     $time = date('Y-m-d H:i:s');
 
     //database
-    $con = OpenCon();
+    try{
+        $con = OpenCon();
 
-    $stmt = $con->prepare("INSERT INTO nohp (nohp, media, recorded_on) VALUES (?, ?, ?);");
-	$stmt -> bind_param("sss", $phone_number, $media, $time);
-	$result = $stmt -> execute();
+        $stmt = $con->prepare("INSERT INTO nohp (nohp, media, recorded_on) VALUES (?, ?, ?);");
+        $stmt -> bind_param("sss", $phone_number, $media, $time);
+        $result = $stmt -> execute();
 
-    if($result){
-        $GLOBALS['message'] = "Submitted! Thank you :)";
-    }else{
-        $GLOBALS['message'] = "An error has occured:\n" . (string) $stmt -> error;
+        if($result){
+            $GLOBALS['message'] = "Submitted! Thank you :)";
+        }else{
+            $GLOBALS['message'] = "An error has occured:\n" . (string) $stmt -> error;
+        }
+    } catch (Exception $e) {
+        $GLOBALS['message'] = "An error has occured:\n" .$e->getMessage();
     }
 
     CloseCon($con);
