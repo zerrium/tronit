@@ -99,6 +99,11 @@ countData();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Fight spammers with their own data!">
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="googlebot" content="notranslate">
+    <meta name="keywords" content="Tronit, spam, Zerrium">
+    <meta name="author" content="Zerrium">
     <title>Tronit</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Coda">
